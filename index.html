@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'sha256-j+/rz6uLb85d/SQVyBV/xAS4ImjgJvIiGnKr4qkD3YY='; script-src 'sha256-bnye0HExT6WeNQ/9cGWZ3py5RJTDXxV97ajrJ6+Z/bY='; font-src data:; img-src data:; base-uri 'none'; form-action 'none'">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'sha256-6u+DAqPpIhQoM4be9mcYIcsLjEVnNcLLxO7Vdwjk20A='; script-src 'sha256-bnye0HExT6WeNQ/9cGWZ3py5RJTDXxV97ajrJ6+Z/bY='; font-src data:; img-src data:; base-uri 'none'; form-action 'none'">
 <meta name="description" content="Portfolio de Mahé Laurent, étudiant en BUT Réseaux et Télécommunications, parcours cybersécurité : homelab auto-hébergé et LLM entraîné from scratch.">
 <meta name="theme-color" content="#efeafb" media="(prefers-color-scheme: light)">
 <meta name="theme-color" content="#0e0820" media="(prefers-color-scheme: dark)">
@@ -229,10 +229,8 @@ a.slot{text-decoration:none;color:var(--ink)}
 .chart figcaption{font-size:.9rem;color:var(--muted);margin-top:.5rem}
 .c-grid{stroke:var(--line);stroke-width:1}
 .c-ax{fill:var(--muted);font-family:var(--mono);font-size:11px}
-.c-gap{fill:color-mix(in srgb,var(--ink) 5%,transparent)}
 .c-fw,.c-wk{fill:none;stroke-width:2.2;stroke-linejoin:round}
 .c-fw{stroke:var(--mag)}.c-wk{stroke:var(--cyan)}
-.c-dash{stroke-dasharray:5 5}
 .c-lab{font-family:var(--mono);font-size:12px;font-weight:600}
 .c-lfw{fill:var(--mag)}.c-lwk{fill:var(--cyan)}
 .chat{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr));gap:1.25rem}
@@ -254,6 +252,9 @@ footer{max-width:1080px;margin:0 auto;padding:2.5rem clamp(1rem,4vw,3rem);color:
 @media (max-width:620px){
   .skill{grid-template-columns:1fr;gap:.75rem}
   .choices div{grid-template-columns:1fr}
+  .chart .c-ax{font-size:15px}
+  .chart .c-t{font-size:14px}
+  .chart .c-lab{font-size:18px}
 }
 @media (max-width:860px){
   .case-grid{grid-template-columns:1fr}
@@ -542,19 +543,19 @@ footer{max-width:1080px;margin:0 auto;padding:2.5rem clamp(1rem,4vw,3rem);color:
 
     <h3>L’entraînement</h3>
     <figure class="chart">
-      <svg viewBox="0 0 600 290" role="img" aria-labelledby="lc-t lc-d">
+      <svg viewBox="0 0 600 298" role="img" aria-labelledby="lc-t lc-d">
         <title id="lc-t">Courbe de loss de validation du pré-entraînement</title>
-        <desc id="lc-d">La loss de validation chute de 10,5 au départ (tirage au hasard) à environ 3,4 après 2000 steps, puis descend lentement jusqu’à 2,93 sur FineWeb-Edu et 2,66 sur Wikipédia au step 19 073. Les deux courbes restent parallèles, sans signe de surapprentissage.</desc>
-        <line class="c-grid" x1="52" y1="211.7" x2="580" y2="211.7"/><text class="c-ax" x="44" y="215.7" text-anchor="end">3.0</text><line class="c-grid" x1="52" y1="173.3" x2="580" y2="173.3"/><text class="c-ax" x="44" y="177.3" text-anchor="end">3.5</text><line class="c-grid" x1="52" y1="135.0" x2="580" y2="135.0"/><text class="c-ax" x="44" y="139.0" text-anchor="end">4.0</text><line class="c-grid" x1="52" y1="96.7" x2="580" y2="96.7"/><text class="c-ax" x="44" y="100.7" text-anchor="end">4.5</text><line class="c-grid" x1="52" y1="58.3" x2="580" y2="58.3"/><text class="c-ax" x="44" y="62.3" text-anchor="end">5.0</text><line class="c-grid" x1="52" y1="20.0" x2="580" y2="20.0"/><text class="c-ax" x="44" y="24.0" text-anchor="end">5.5</text><text class="c-ax" x="52.0" y="270" text-anchor="middle">0</text><text class="c-ax" x="190.4" y="270" text-anchor="middle">5k</text><text class="c-ax" x="328.8" y="270" text-anchor="middle">10k</text><text class="c-ax" x="467.2" y="270" text-anchor="middle">15k</text><text class="c-ax" x="580.0" y="270" text-anchor="middle">19k</text>
-        <rect class="c-gap" x="287.3" y="20" width="276.8" height="230"/>
-        <text class="c-ax" x="425.7" y="36" text-anchor="middle">points non relevés</text>
-        <polyline class="c-fw" points="58.9,27.6 65.8,103.3 72.8,137.7 79.7,155.5 86.6,164.7 93.5,169.9 100.4,176.1 107.4,178.2 114.3,181.5 121.2,185.6 128.1,186.0 135.0,190.1 142.0,188.2 148.9,192.7 155.8,191.0 162.7,196.0 169.7,194.6 176.6,193.9 183.5,197.9 190.4,198.6 197.3,200.3 204.3,199.6 211.2,198.9 218.1,199.9 225.0,201.7 231.9,202.9 238.9,205.1 245.8,203.7 252.7,202.9 259.6,203.6 266.5,206.2 273.5,204.9 280.4,204.5 287.3,206.1"/><polyline class="c-fw c-dash" points="287.3,206.1 564.1,215.4 571.1,215.3 578.0,217.1"/>
-        <polyline class="c-wk" points="58.9,41.5 65.8,117.1 72.8,158.0 79.7,181.3 86.6,188.9 93.5,195.7 100.4,196.6 107.4,201.1 114.3,203.6 121.2,203.3 128.1,206.8 135.0,213.8 142.0,208.3 148.9,212.0 155.8,213.0 162.7,217.3 169.7,213.0 176.6,217.9 183.5,217.7 190.4,218.9 197.3,219.8 204.3,219.0 211.2,221.2 218.1,221.2 225.0,224.2 231.9,223.4 238.9,223.6 245.8,223.4 252.7,225.1 259.6,227.6 266.5,224.4 273.5,223.4 280.4,226.8 287.3,226.5"/><polyline class="c-wk c-dash" points="287.3,226.5 564.1,241.5 571.1,236.3 578.0,237.7"/>
-        <text class="c-lab c-lfw" x="580" y="209.1" text-anchor="end">FineWeb-Edu 2,93</text>
-        <text class="c-lab c-lwk" x="580" y="255.7" text-anchor="end">Wikipédia 2,66</text>
-        <text class="c-ax" x="316.0" y="285" text-anchor="middle">steps (1 step = 524 288 tokens)</text>
+        <desc id="lc-d">La loss de validation passe de 10,5 au départ (tirage au hasard) à environ 5,3 après 250 steps, puis à 3,4 sur FineWeb-Edu et 3,1 sur Wikipédia après 2 000 steps, et descend lentement jusqu'à 2,93 sur FineWeb-Edu et 2,66 sur Wikipédia au step 19 000. Les deux courbes restent parallèles, sans remontée qui trahirait du surapprentissage.</desc>
+        <line class="c-grid" x1="52" y1="250.0" x2="580" y2="250.0"/><text class="c-ax" x="44" y="254.0" text-anchor="end">2,5</text><line class="c-grid" x1="52" y1="211.7" x2="580" y2="211.7"/><text class="c-ax" x="44" y="215.7" text-anchor="end">3,0</text><line class="c-grid" x1="52" y1="173.4" x2="580" y2="173.4"/><text class="c-ax" x="44" y="177.4" text-anchor="end">3,5</text><line class="c-grid" x1="52" y1="135.0" x2="580" y2="135.0"/><text class="c-ax" x="44" y="139.0" text-anchor="end">4,0</text><line class="c-grid" x1="52" y1="96.7" x2="580" y2="96.7"/><text class="c-ax" x="44" y="100.7" text-anchor="end">4,5</text><line class="c-grid" x1="52" y1="58.3" x2="580" y2="58.3"/><text class="c-ax" x="44" y="62.3" text-anchor="end">5,0</text><line class="c-grid" x1="52" y1="20.0" x2="580" y2="20.0"/><text class="c-ax" x="44" y="24.0" text-anchor="end">5,5</text><text class="c-ax" x="52.0" y="270" text-anchor="middle">0</text><text class="c-ax" x="190.4" y="270" text-anchor="middle">5k</text><text class="c-ax" x="328.8" y="270" text-anchor="middle">10k</text><text class="c-ax" x="467.2" y="270" text-anchor="middle">15k</text><text class="c-ax" x="578.0" y="270" text-anchor="middle">19k</text>
+        <polyline class="c-fw" points="58.9,27.6 65.8,103.4 72.8,137.7 79.7,155.6 86.6,164.8 93.5,169.9 100.4,176.1 107.4,178.3 114.3,181.6 121.2,185.6 128.1,186.0 135.0,190.2 142.0,188.2 148.9,192.7 155.8,191.0 162.7,196.1 169.7,194.7 176.6,193.9 183.5,197.9 190.4,198.6 197.3,200.4 204.3,199.7 211.2,199.0 218.1,200.0 225.0,201.7 231.9,203.0 238.9,205.1 245.8,203.7 252.7,203.0 259.6,203.6 266.5,206.3 273.5,205.0 280.4,204.6 287.3,206.2 294.2,206.2 301.1,206.8 308.1,207.3 315.0,209.1 321.9,206.3 328.8,208.6 335.8,208.1 342.7,210.0 349.6,212.4 356.5,206.5 363.4,210.0 370.4,207.0 377.3,210.1 384.2,208.3 391.1,207.5 398.0,213.5 405.0,212.4 411.9,211.1 418.8,212.5 425.7,214.6 432.6,211.8 439.6,212.9 446.5,210.7 453.4,215.4 460.3,214.9 467.2,213.7 474.2,211.2 481.1,214.0 488.0,212.1 494.9,216.1 501.9,213.7 508.8,215.0 515.7,213.5 522.6,216.8 529.5,214.5 536.5,212.7 543.4,216.2 550.3,214.5 557.2,213.8 564.1,215.5 571.1,215.4 578.0,217.1"/>
+        <polyline class="c-wk" points="58.9,41.5 65.8,117.1 72.8,158.0 79.7,181.3 86.6,188.9 93.5,195.8 100.4,196.7 107.4,201.1 114.3,203.6 121.2,203.3 128.1,206.9 135.0,213.8 142.0,208.3 148.9,212.0 155.8,213.1 162.7,217.3 169.7,213.0 176.6,217.9 183.5,217.8 190.4,218.9 197.3,219.8 204.3,219.1 211.2,221.3 218.1,221.2 225.0,224.2 231.9,223.4 238.9,223.7 245.8,223.4 252.7,225.1 259.6,227.6 266.5,224.4 273.5,223.4 280.4,226.9 287.3,226.5 294.2,226.0 301.1,228.9 308.1,226.7 315.0,225.3 321.9,229.2 328.8,228.1 335.8,227.3 342.7,232.5 349.6,228.3 356.5,231.6 363.4,231.6 370.4,233.1 377.3,231.3 384.2,233.1 391.1,234.7 398.0,230.9 405.0,231.4 411.9,230.7 418.8,231.8 425.7,233.9 432.6,232.2 439.6,234.6 446.5,232.7 453.4,234.2 460.3,230.8 467.2,236.4 474.2,235.9 481.1,234.2 488.0,236.5 494.9,235.7 501.9,234.6 508.8,234.0 515.7,238.5 522.6,237.2 529.5,236.5 536.5,236.4 543.4,239.1 550.3,234.5 557.2,234.5 564.1,241.5 571.1,236.3 578.0,237.8"/>
+        <circle class="c-lfw" cx="578.0" cy="217.1" r="3.5"/>
+        <circle class="c-lwk" cx="578.0" cy="237.8" r="3.5"/>
+        <line class="c-fw" x1="330" y1="40" x2="354" y2="40"/><text class="c-lab c-lfw" x="362" y="44">FineWeb-Edu 2,93</text>
+        <line class="c-wk" x1="330" y1="62" x2="354" y2="62"/><text class="c-lab c-lwk" x="362" y="66">Wikipédia 2,66</text>
+        <text class="c-ax c-t" x="316.0" y="292" text-anchor="middle">steps (1 step = 524 288 tokens)</text>
       </svg>
-      <figcaption>Loss de validation pendant le pré-entraînement. Au step 0 elle valait 10,5, soit un tirage au hasard parmi 32 768 tokens.</figcaption>
+      <figcaption>Loss de validation relevée tous les 250 steps. Au step 0 (hors graphique) elle valait 10,5, soit un tirage au hasard parmi 32 768 tokens.</figcaption>
     </figure>
 
     <h3>Ce qu’il répond</h3>
